@@ -19,13 +19,13 @@ single pass algorithms, where possible.
 **Problem 1.** 
    Extend BST to AVL trees (AVLTree).  Starter code: AVLTree.java.
 
-**Solution:** [AVLTree.java]() 
+**Solution:** [AVLTree.java](https://github.com/rahul1947/SP05-Balanced-Binary-Search-Trees/blob/master/AVLTree.java) 
 
 
 **Problem 2.** 
    Extend BST to Red Black Trees (RedBlacktree).  Starter code: RedBlackTree.java.
 
-**Solution:** [RedBlackTree.java]()
+**Solution:** [RedBlackTree.java](https://github.com/rahul1947/SP05-Balanced-Binary-Search-Trees/blob/master/RedBlackTree.java)
 
 **Problem 3.** 
    Extend BST to Splay Trees (SplayTree).  Implement bottom-up splaying.
@@ -37,4 +37,4 @@ single pass algorithms, where possible.
    but every element should have a non-zero probability of being chosen for contains/remove.
    Starter code: SplayTree.java.
 
-**Solution:** [SplayTree.java]()
+**Solution:** [SplayTree.java](https://github.com/rahul1947/SP05-Balanced-Binary-Search-Trees/blob/master/SplayTree.java)
