@@ -1,4 +1,4 @@
-# SP05-Balanced-Binary-Search-Trees
+## SP05-Balanced-Binary-Search-Trees
 Implementation of Balanced Binary Search Trees - AVLTree, RedBlackTree, SplayTree. 
 
 #### Author
@@ -10,10 +10,11 @@ Implementation of Balanced Binary Search Trees - AVLTree, RedBlackTree, SplayTre
 _______________________________________________________________________________
 ### Problems: 
 
-#### A. Optional tasks (individual): There is no required team task in SP5. 
-This is an optional assignment (for individual submission only), with deadline 
-at the end of the semester. Important: elegance of code, code reuse from BST, 
-and implementation of single pass algorithms, where possible.
+#### A. Optional tasks (individual): 
+There is no required team task in SP5. This is an optional assignment (for 
+individual submission only), with deadline at the end of the semester. 
+**Important:** elegance of code, code reuse from BST, and implementation of 
+single pass algorithms, where possible.
 
 **Problem 1.** 
    Extend BST to AVL trees (AVLTree).  Starter code: AVLTree.java.
