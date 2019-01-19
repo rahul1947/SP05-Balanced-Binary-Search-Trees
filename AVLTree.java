@@ -21,4 +21,10 @@ public class AVLTree<T extends Comparable<? super T>> extends BinarySearchTree<T
 	return super.add(x);
     }
 }
-
+/**
+ * AVL Tree and RedBlack Tree looks same, but AVL Tree is easy to code. 
+ * Also, AVL Tree can only be two pass.
+ *  
+ * Whereas, RedBlack Tree can be done in single pass (might be the reason 
+ * for Java to implement RedBlack Tree). 
+ */

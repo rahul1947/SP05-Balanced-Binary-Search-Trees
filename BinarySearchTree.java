@@ -6,13 +6,24 @@ import java.util.Stack;
 import java.util.Comparator;
 
 /**
- * CS 5V81.001: Implementation of DSA - Short Project 4
- * Implementation of Binary Search Tree
- * @author Bharath Reddy - bxr180008
+ * CS 5V81.001: Implementation of DSA 
+ * Short Project 05:Implementation of Balanced BST
+ * 
  * @author Rahul Nalawade - rsn170330
+ * @author Bharath Reddy - bxr180008
  */
-
 public class BinarySearchTree<T extends Comparable<? super T>> implements Iterable<T> {
+	// Standard Attributes of BST:  
+	Entry<T> root; // root of BST
+	int size; // size of BST
+	
+	// Personal Attributes of BST:
+	Entry<T> t; // a temporary entry
+	// to keep track of ancestral information - 
+	
+	// For tree-traversal from root to a certain node t
+	// useful in methods: find(t) bypass(t)
+	Stack<Entry <T>> ancestors = new Stack<Entry <T>>(); // also useful in AVL (balancing)
 	
 	// Every node of BST = an Entry
 	static class Entry<T> {
@@ -33,15 +44,6 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
 			this.right = null;
 		}
 	}
-	
-	// Standard Attributes of BST:  
-	Entry<T> root; // root of BST
-	int size; // size of BST
-	
-	// Personal Attributes of BST:
-	Entry<T> t; // a temporary entry
-	// to keep track of ancestral information - 
-	Stack<Entry <T>> ancestors = new Stack<Entry <T>>(); // useful in AVL (balancing)
 	
 	// default constructor
 	public BinarySearchTree() {
@@ -148,9 +150,10 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
 				t.element = x; // replacement*
 				return false; // funny code :)
 			}
-			
 			// Now, adding as child of t
-			else if (x.compareTo(t.element) < 0) t.left = new Entry<T>(x); // x < t.element
+			
+			// When x < t.element
+			else if (x.compareTo(t.element) < 0) t.left = new Entry<T>(x); 
 			else t.right = new Entry<T>(x); // t.element < x
 			
 			size++;
@@ -213,8 +216,8 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
 	}
 	
 	/**
-	 * Removes parent from the subtree -grandParent-parent-child- 
-	 * attaching only child to grandParent
+	 * Removes node t from the subtree -parent(t)-t-child(t)- 
+	 * attaching child of t to parent of t
 	 * 
 	 * Precondition: 
 	 * 	1. t has at-most one child 
@@ -222,20 +225,28 @@ public class BinarySearchTree<T extends Comparable<? super T>> implements Iterab
 	 * @param t the input element
 	 */
 	private void bypass(Entry<T> t) {
+		// top of stack ancestors is parent of t
+		Entry<T> parent = ancestors.peek(); 
 		
-		Entry<T> parent = ancestors.peek(); // parent of t
-		
-		Entry<T> child = (t.left == null)? t.right: t.left; // Precondition 1
+		// Precondition 1
+		Entry<T> child = (t.left == null)? t.right: t.left; 
 		
 		// when t is root of the tree
 		if (parent == null) root = child; // bypassing root 
 		
 		else { 
-			// When the king(t) is dead, long live the king! ;)
+			// ^^When the king(t) is dead, long live the king! ;)
 			if (parent.left == t) parent.left = child; 
 			else parent.right = child; // t was rightChild of parent
 		}
 	}
+	/**
+	 * ^^NOTE: Could be made more nicer (not code efficiency, but in terms of Software Engineering). 
+	 * On top of stack having just Entry, keep a variable indicating which direction we're traversing
+	 * left or right, and before heading into that direction, we'll push(t, right) or push(t, left) 
+	 * into the stack. And in case of pulling from the stack, we'll get a tuple<t, direction> indicating
+	 * which way to connect - left or right. 
+	 */
 
 	/**
 	 * Creates an array with the elements using in-order traversal of tree.
